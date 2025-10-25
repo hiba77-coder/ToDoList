@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>To-Do List + Pomodoro</title>
+
+  <!-- Bootstrap -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <style>
+    body {
+      background-color: hsl(27, 90%, 92%);
+      color: #4b3f37;
+      padding: 2rem;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    h1, h2 {
+      text-align: center;
+      color: #d87b6c;
+    }
+    #submitBtn {
+      background-color: #f09f9c;
+      color: white;
+      border: none;
+      padding: 0.6rem 1rem;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+
+    #submitBtn:hover {
+      background-color: #e4908d;
+      box-shadow: 0 4px 10px rgba(214, 120, 120, 0.5);
+    }
+
+    #submitBtn:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(240, 159, 156, 0.6);
+    }
+    .card {
+      background-color: #fffaf8;
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 2rem;
+    }
+
+    .timer {
+      font-family: "Roboto Mono", monospace;
+      font-size: 3rem;
+      color: #d87b6c;
+      font-weight: bold;
+    }
+
+    .buttonsControll button {
+      background-color: #f09f9c;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 0.5rem 1rem;
+      transition: 0.3s;
+    }
+
+    .buttonsControll button:hover {
+      background-color: #e4908d;
+    }
+
+    details {
+      background-color: #fcd2c2;
+      border-radius: 10px;
+      padding: 1rem;
+      margin-top: 1rem;
+    }
+
+    details summary {
+      cursor: pointer;
+      font-weight: 600;
+      color: #8b4c3c;
+    }
+
+    .divider {
+      margin: 2rem 0;
+      border-top: 2px dashed #e6a69a;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <header class="mb-4">
+      <h1>To-Do List</h1>
+    </header>
+    <section class="mb-5">
+      <h2 class="mb-3">Tasks</h2>
+
+      <form id="AddTask" class="row g-3 mb-3">
+        <div class="col-md-6">
+          <input type="text" id="newTask" class="form-control" placeholder="Add a task" required />
+        </div>
+        <div class="col-md-4">
+          <input type="datetime-local" id="taskDate" class="form-control" />
+        </div>
+        <div class="col-md-2 d-grid">
+          <button type="submit" id="submitBtn">Add</button>
+        </div>
+      </form>
+
+      <div id="tasks" class="taskList list-group mb-4"></div>
+
+      <hr class="divider" />
+
+      <details>
+        <summary>Settings</summary>
+        <div class="mt-2">
+          <div class="form-check mb-2">
+            <input class="form-check-input" type="checkbox" id="autoStart" />
+            <label class="form-check-label" for="autoStart">Auto Start Next Session</label>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <label for="workTime" class="form-label">Work Time</label>
+              <input type="number" class="form-control" id="workTime" min="5" max="120" value="25" />
+            </div>
+            <div class="col">
+              <label for="breakTime" class="form-label">Break Time</label>
+              <input type="number" class="form-control" id="breakTime" min="1" max="50" value="5" />
+            </div>
+          </div>
+        </div>
+      </details>
+    </section>
+    <section>
+      <h2>Pomodoro Timer</h2>
+      <div class="card text-center">
+        <div class="timer mb-2" id="timer">25:00</div>
+        <div class="sessionType mb-3" id="sessionType">Work</div>
+
+        <div class="buttonsControll d-flex justify-content-center flex-wrap gap-2">
+          <button id="startBtn">Start</button>
+          <button id="pauseBtn">Pause</button>
+          <button id="resetBtn">Reset</button>
+          <button id="skipBtn">Skip</button>
+        </div>
+
+        <div id="sessionCount" class="mt-3 text-muted">Completed!</div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
