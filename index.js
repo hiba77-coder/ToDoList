@@ -57,6 +57,7 @@ function deleteTask(index) {
   renderTasks();
 }
 
+
 //POMODORO
 const timerDisplay = document.getElementById("timer");
 const sessionType = document.getElementById("sessionType");
@@ -161,6 +162,7 @@ resetBtn.addEventListener("click", resetTimer);
 skipBtn.addEventListener("click", skipSession);
 
 updateDisplay();
+
 // THEME TOGGLE
 const themeToggle = document.getElementById("themeToggle");
 
